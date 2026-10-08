@@ -1,0 +1,20 @@
+# Copy to application-local.yml (gitignored) and fill in real values.
+# Run backend with: --spring.profiles.active=local
+spring:
+  mail:
+    host: mail.yourcompany.com        # from webmail -> "Configure Mail Client" (SMTP/outgoing server)
+    port: 587                         # 587 STARTTLS, or 465 if the server uses SSL
+    username: you@yourcompany.com     # the email your senior gave you
+    password: CHANGE_ME               # the webmail password
+
+    # Only needed if your cPanel server requires SSL on port 465:
+    # properties:
+    #   mail:
+    #     smtp:
+    #       ssl:
+    #         enable: true
+
+app:
+  mail:
+    from: you@yourcompany.com         # sender address users will see
+    from-name: "Notification System"
