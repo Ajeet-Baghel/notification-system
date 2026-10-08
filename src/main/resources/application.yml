@@ -19,7 +19,11 @@ spring:
       path: /h2-console
 
   mail:
-    host: ${MAIL_HOST:smtp.gmail.com}
+    # Company SMTP relay. Examples:
+    #   Microsoft 365:      MAIL_HOST=smtp.office365.com  MAIL_PORT=587
+    #   Google Workspace:   MAIL_HOST=smtp.gmail.com      MAIL_PORT=587 (app password)
+    #   Internal relay:     MAIL_HOST=smtp.yourcompany.com MAIL_PORT=25
+    host: ${MAIL_HOST:}
     port: ${MAIL_PORT:587}
     username: ${MAIL_USERNAME:}
     password: ${MAIL_PASSWORD:}
@@ -31,6 +35,10 @@ spring:
             enable: true
 
 app:
+  mail:
+    # Sender identity for notification emails (defaults to the SMTP login)
+    from: ${MAIL_FROM:${MAIL_USERNAME:}}
+    from-name: ${MAIL_FROM_NAME:Notification System}
   jwt:
     # Override with JWT_SECRET env var in any non-local environment
     secret: ${JWT_SECRET:local-dev-secret-change-me-0123456789abcdef0123456789abcdef}
