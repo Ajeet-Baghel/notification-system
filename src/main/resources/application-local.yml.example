@@ -2,8 +2,14 @@
 # Run backend with: --spring.profiles.active=local
 spring:
   mail:
-    host: mail.yourcompany.com        # from webmail -> "Configure Mail Client" (SMTP/outgoing server)
-    port: 587                         # 587 STARTTLS, or 465 if the server uses SSL
+    # Works with ANY SMTP server — company cPanel webmail, Gmail app password,
+    # Mailtrap for testing, SendGrid/SES for production. Only values change, no code.
+    #
+    # cPanel webmail (yours): Webmail -> "Other Webmail Features" -> "Configure Mail Client"
+    # shows the exact outgoing server. It's usually mail.<domain> or the server
+    # hostname (e.g. s1303.sgp1.mysecurecloudhost.com). Prefer the "secure SSL/TLS" settings.
+    host: mail.yourcompany.com
+    port: 587                         # 587 STARTTLS; cPanel often lists 465 SSL too
     username: you@yourcompany.com     # the email your senior gave you
     password: CHANGE_ME               # the webmail password
 
