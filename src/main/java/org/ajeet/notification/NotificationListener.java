@@ -39,7 +39,7 @@ public class NotificationListener {
                     "Welcome to Notification System",
                     "Hi " + event.name() + ",\n\nYour account has been created successfully.\n\n— Notification System");
         } catch (Exception e) {
-            log.warn("Welcome email failed for {}: {}", event.email(), e.getMessage());
+            log.warn("Welcome email failed for {}", event.email(), e);
         }
 
         try {
@@ -47,7 +47,7 @@ public class NotificationListener {
                     event.phone(),
                     "Hi " + event.name() + ", welcome! Your account was created successfully.");
         } catch (Exception e) {
-            log.warn("Welcome WhatsApp failed for {}: {}", event.phone(), e.getMessage());
+            log.warn("Welcome WhatsApp failed for {}", event.phone(), e);
         }
     }
 
@@ -63,7 +63,7 @@ public class NotificationListener {
                     "Hi " + event.name() + ",\n\nA login to your account was detected at "
                             + when + ".\n\nIf this wasn't you, change your password immediately.\n\n— Notification System");
         } catch (Exception e) {
-            log.warn("Login alert email failed for {}: {}", event.email(), e.getMessage());
+            log.warn("Login alert email failed for {}", event.email(), e);
         }
 
         try {
@@ -72,7 +72,7 @@ public class NotificationListener {
                     "Security alert: a login to your account was detected at " + when
                             + ". If this wasn't you, please reset your password.");
         } catch (Exception e) {
-            log.warn("Login alert WhatsApp failed for {}: {}", event.phone(), e.getMessage());
+            log.warn("Login alert WhatsApp failed for {}", event.phone(), e);
         }
     }
 }
