@@ -20,6 +20,20 @@ spring:
     #       ssl:
     #         enable: true
 
+# ── Alternative providers — swap host/port/username/password, zero code changes ──
+#
+#   Gmail (free, needs 2FA + App Password from myaccount.google.com/apppasswords):
+#     host: smtp.gmail.com | port: 587 | username: you@gmail.com | password: <16-char app password>
+#
+#   Mailtrap (recommended for dev — mail lands in Mailtrap's web inbox, nothing really sent):
+#     host: sandbox.smtp.mailtrap.io | port: 587 | username/password from mailtrap.io > Inboxes > SMTP Settings
+#
+#   Brevo (real delivery, 300 emails/day free):
+#     host: smtp-relay.brevo.com | port: 587 | username: your brevo login | password: SMTP key
+#
+#   SendGrid (real delivery, 100 emails/day free):
+#     host: smtp.sendgrid.net | port: 587 | username: literally "apikey" | password: your API key
+
 app:
   mail:
     from: you@yourcompany.com         # sender address users will see
