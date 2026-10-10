@@ -32,5 +32,11 @@ build/
 ### VS Code ###
 .vscode/
 
+### Local secrets — never commit real credentials ###
+src/main/resources/application-local.yml
+*.local.env
+.env
+.env.*
+
 ### Mac OS ###
 .DS_Store

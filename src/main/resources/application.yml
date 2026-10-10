@@ -1,0 +1,54 @@
+spring:
+  application:
+    name: notification-system
+
+  datasource:
+    url: jdbc:h2:mem:notifications
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  mail:
+    # Company SMTP relay. Examples:
+    #   Microsoft 365:      MAIL_HOST=smtp.office365.com  MAIL_PORT=587
+    #   Google Workspace:   MAIL_HOST=smtp.gmail.com      MAIL_PORT=587 (app password)
+    #   Internal relay:     MAIL_HOST=smtp.yourcompany.com MAIL_PORT=25
+    host: ${MAIL_HOST:}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+app:
+  mail:
+    # Sender identity for notification emails (defaults to the SMTP login)
+    from: ${MAIL_FROM:${MAIL_USERNAME:}}
+    from-name: ${MAIL_FROM_NAME:Notification System}
+  jwt:
+    # Override with JWT_SECRET env var in any non-local environment
+    secret: ${JWT_SECRET:local-dev-secret-change-me-0123456789abcdef0123456789abcdef}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173}
+  notifications:
+    whatsapp:
+      enabled: ${WHATSAPP_ENABLED:false}
+      # Twilio sandbox: from is typically whatsapp:+14155238886
+      account-sid: ${TWILIO_ACCOUNT_SID:}
+      auth-token: ${TWILIO_AUTH_TOKEN:}
+      from-number: ${TWILIO_WHATSAPP_FROM:}

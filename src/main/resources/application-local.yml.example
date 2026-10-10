@@ -1,0 +1,40 @@
+# Copy to application-local.yml (gitignored) and fill in real values.
+# Run backend with: --spring.profiles.active=local
+spring:
+  mail:
+    # Works with ANY SMTP server — company cPanel webmail, Gmail app password,
+    # Mailtrap for testing, SendGrid/SES for production. Only values change, no code.
+    #
+    # cPanel webmail (yours): Webmail -> "Other Webmail Features" -> "Configure Mail Client"
+    # shows the exact outgoing server. It's usually mail.<domain> or the server
+    # hostname (e.g. s1303.sgp1.mysecurecloudhost.com). Prefer the "secure SSL/TLS" settings.
+    host: mail.yourcompany.com
+    port: 587                         # 587 STARTTLS; cPanel often lists 465 SSL too
+    username: you@yourcompany.com     # the email your senior gave you
+    password: CHANGE_ME               # the webmail password
+
+    # Only needed if your cPanel server requires SSL on port 465:
+    # properties:
+    #   mail:
+    #     smtp:
+    #       ssl:
+    #         enable: true
+
+# ── Alternative providers — swap host/port/username/password, zero code changes ──
+#
+#   Gmail (free, needs 2FA + App Password from myaccount.google.com/apppasswords):
+#     host: smtp.gmail.com | port: 587 | username: you@gmail.com | password: <16-char app password>
+#
+#   Mailtrap (recommended for dev — mail lands in Mailtrap's web inbox, nothing really sent):
+#     host: sandbox.smtp.mailtrap.io | port: 587 | username/password from mailtrap.io > Inboxes > SMTP Settings
+#
+#   Brevo (real delivery, 300 emails/day free):
+#     host: smtp-relay.brevo.com | port: 587 | username: your brevo login | password: SMTP key
+#
+#   SendGrid (real delivery, 100 emails/day free):
+#     host: smtp.sendgrid.net | port: 587 | username: literally "apikey" | password: your API key
+
+app:
+  mail:
+    from: you@yourcompany.com         # sender address users will see
+    from-name: "Notification System"
